@@ -11,12 +11,12 @@ open Thoth.Fetch
 open Fulma
 open Thoth.Json
 
-open Shared
-
 // The model holds data that you want to keep track of while the application is running
 // in this case, we are keeping track of a counter
 // we mark it as optional, because initially it will not be available from the client
 // the initial value will be requested from server
+
+type Counter = { Value: int }
 type Model = { Counter: Counter option }
 
 // The Msg type defines what events/actions can occur while the application is running
@@ -26,14 +26,12 @@ type Msg =
 | Decrement
 | InitialCountLoaded of Counter
 
-let initialCounter () = Fetch.fetchAs<Counter> "/api/init"
+let initialCounter () = 1
 
 // defines the initial state and initial command (= side-effect) of the application
 let init () : Model * Cmd<Msg> =
     let initialModel = { Counter = None }
-    let loadCountCmd =
-        Cmd.OfPromise.perform initialCounter () InitialCountLoaded
-    initialModel, loadCountCmd
+    initialModel, Cmd.Empty
 
 // The update function computes the next state of the application based on the current state and the incoming events/messages
 // It can also run side-effects (encoded as commands) like calling the server via Http.
@@ -57,7 +55,7 @@ let safeComponents =
         span [ ]
            [ a [ Href "https://github.com/SAFE-Stack/SAFE-template" ]
                [ str "SAFE  "
-                 str Version.template ]
+                 str "adsadsa" ]
              str ", "
              a [ Href "https://github.com/giraffe-fsharp/Giraffe" ] [ str "Giraffe" ]
              str ", "
@@ -73,7 +71,7 @@ let safeComponents =
 
     span [ ]
         [ str "Version "
-          strong [ ] [ str Version.app ]
+          strong [ ] [ str "yyy"]
           str " powered by: "
           components ]
 
