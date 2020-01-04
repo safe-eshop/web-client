@@ -16,6 +16,8 @@ open Thoth.Json
 // we mark it as optional, because initially it will not be available from the client
 // the initial value will be requested from server
 
+type Product = { }
+
 type Counter = { Value: int }
 type Model = { Counter: Counter option }
 
@@ -71,7 +73,7 @@ let safeComponents =
 
     span [ ]
         [ str "Version "
-          strong [ ] [ str "yyy"]
+          strong [ ] [ str "jak tam kurwa jebane polskie smiecie"]
           str " powered by: "
           components ]
 
