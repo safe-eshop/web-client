@@ -16,7 +16,6 @@ open Thoth.Json
 // we mark it as optional, because initially it will not be available from the client
 // the initial value will be requested from server
 
-type Product = { }
 
 type Counter = { Value: int }
 type Model = { Counter: Counter option }
@@ -32,7 +31,7 @@ let initialCounter () = 1
 
 // defines the initial state and initial command (= side-effect) of the application
 let init () : Model * Cmd<Msg> =
-    let initialModel = { Counter = None }
+    let initialModel = { Counter = Some({ Value = 1 }) }
     initialModel, Cmd.Empty
 
 // The update function computes the next state of the application based on the current state and the incoming events/messages
@@ -57,7 +56,7 @@ let safeComponents =
         span [ ]
            [ a [ Href "https://github.com/SAFE-Stack/SAFE-template" ]
                [ str "SAFE  "
-                 str "adsadsa" ]
+                 str "test" ]
              str ", "
              a [ Href "https://github.com/giraffe-fsharp/Giraffe" ] [ str "Giraffe" ]
              str ", "
