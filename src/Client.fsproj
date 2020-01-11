@@ -7,6 +7,7 @@
   <ItemGroup>
     <None Include="index.html" />
     <None Include="paket.references" />
+    <Compile Include="./Catalog/Model.fs" />
     <Compile Include="Client.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
